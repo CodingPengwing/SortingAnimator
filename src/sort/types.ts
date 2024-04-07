@@ -26,4 +26,4 @@ export type SortFunction<T extends ItemType> = (array: T[]) => SortResult<T>;
 export type SortFunctionInitializer<
   T extends ItemType,
   V extends string | undefined = undefined
-> = (comparator: Comparator<T>, variant: V) => SortFunction<T>;
+> = (compare: Comparator<T>, variant: V) => SortFunction<T>;

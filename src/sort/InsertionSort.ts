@@ -4,12 +4,12 @@ import { match } from "ts-pattern";
 export const InsertionSort: SortFunctionInitializer<
   number,
   "SIMPLE" | "IMPROVED"
-> = (comparator, variant) => {
+> = (compare, variant) => {
   function simpleInsertionSort(array: number[]) {
     const initial = array.slice();
     const steps: Step[] = [];
     for (let i = 1; i < array.length; i++) {
-      for (let j = i; j > 0 && comparator(array[j - 1], array[j]) > 0; j--) {
+      for (let j = i; j > 0 && compare(array[j - 1], array[j]) > 0; j--) {
         [array[j], array[j - 1]] = [array[j - 1], array[j]];
       }
     }
@@ -23,7 +23,7 @@ export const InsertionSort: SortFunctionInitializer<
     for (let i = 1; i < array.length; i++) {
       const current = array[i];
       let j = i;
-      while (j > 0 && comparator(array[j - 1], current) > 0) {
+      while (j > 0 && compare(array[j - 1], current) > 0) {
         array[j] = array[j - 1];
         j--;
       }
